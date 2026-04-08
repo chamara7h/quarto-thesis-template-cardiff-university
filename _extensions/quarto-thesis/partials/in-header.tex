@@ -1,0 +1,20 @@
+% =========================================================
+% In-header partial for LuaLaTeX
+% =========================================================
+
+\usepackage{fontspec}
+\setmainfont{Tahoma}
+
+\usepackage[autostyle=true]{csquotes}
+
+\geometry{
+  includefoot
+}
+
+\raggedbottom
+
+\AtBeginDocument{
+  \hypersetup{pdftitle=\ttitle}
+  \hypersetup{pdfauthor=\authorname}
+  \hypersetup{pdfkeywords=\keywordnames}
+}

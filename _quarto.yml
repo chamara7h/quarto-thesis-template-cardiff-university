@@ -1,0 +1,55 @@
+project:
+  type: book
+  output-dir: .
+
+book:
+  title: "A Doctoral Thesis Title"
+  author: "Your Full Name"
+  date: "September 2026"
+  downloads: [pdf]
+  chapters:
+    - index.qmd
+    - Chapters/Chapter2.qmd
+    - references.qmd
+  appendices:
+    - Appendices/AppendixA.qmd
+
+  site-url: https://chamara7h.github.io/project/quarto_thesis/
+  repo-url: https://github.com/chamara7h/quarto-thesis-template-cardiff-university.git
+  repo-actions: [edit, source, issue]
+  search: true
+
+
+abstract: >
+  Insert a summary of no more than 300 words here. This should briefly
+  state the research problem, aims, methods, main findings, and
+  contribution of the thesis.
+
+thesis:
+  degree-name: "Doctor of Philosophy"
+  university: "Cardiff University"
+  group: "Data Lab for Social Good Research Group"
+  acknowledgements: "Frontmatter/acknowledgements.tex"
+  abbreviations: "Frontmatter/abbreviations.tex"
+  symbols: "Frontmatter/symbols.tex"
+  dedication: "Frontmatter/dedication.tex"
+
+bibliography: ["references.bib"]
+
+execute:
+  echo: false
+  warning: false
+  cache: false
+
+format:
+  quarto-thesis-pdf:
+    pdf-engine: lualatex
+    urlcolor: black
+    linkcolor: black
+    toclinkcolor: black
+    number-sections: true
+    toc-depth: 2
+    classoption:
+      - english
+      - 12pt
+

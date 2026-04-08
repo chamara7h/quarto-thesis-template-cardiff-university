@@ -1,0 +1,112 @@
+# Using the Template in Practice {#sec-using-template}
+
+## Writing Workflow
+
+The template is designed around a simple workflow. Each chapter is written in its own file, references are managed through the bibliography database, and the final thesis is rendered from the root project file. This makes the writing process more modular than working in a single long document and reduces the risk of formatting changes affecting the whole thesis unexpectedly.
+
+In practice, the most common workflow is to edit one chapter file at a time, render the full thesis periodically, and use the compiled PDF to check headings, numbering, references, figures, and overall layout.
+
+## Adding Chapters
+
+New chapters should be added as separate `.qmd` files inside the `Chapters/` folder. Once a chapter file has been created, it should be listed in the `chapters:` section of the YAML in `index.qmd`. The order in which the files are listed there determines the order in which they appear in the thesis.
+
+Each chapter should begin with a top-level heading. For example, `# Introduction` will produce a numbered chapter heading in the final PDF. Lower heading levels should then be used to organise sections and subsections within the chapter.
+
+## Cross-Referencing
+
+Quarto provides built-in support for cross-references. This allows figures, tables, and equations to be labelled and cited consistently throughout the thesis.
+
+Figures should be labelled using the `fig-` prefix, tables using the `tbl-` prefix, and equations can be given their own labels. Once labelled, they can be referred to in the text using the relevant reference key. This makes it easier to revise the document later because numbering is updated automatically.
+
+For example, Figure @fig-render-cycle, Table @tbl-reference-examples, and Equation @eq-render-example below are all cross-referenced from within this chapter.
+
+## Citations and Bibliography
+
+All references cited in the thesis should be stored in `references.bib`. In the body text, citations are inserted using citation keys. In this template, the bibliography keys are assumed to follow a format such as `Reference1`, `Reference2`, and so on.
+
+For example, `@Reference1` will generate an in-text citation, while `[@Reference1; @Reference2]` will generate a parenthetical citation containing more than one source. The bibliography is generated automatically and placed at the end of the thesis.
+
+This keeps citation management separate from the main text and makes it easier to revise or replace sources later. This is particularly useful in long-form academic writing projects [@Reference1].
+
+## Example Figure
+
+The figure below illustrates a simple render cycle.
+
+```{r}
+#| label: fig-render-cycle
+#| fig-cap: Example rendering cycle for working with the template.
+#| fig-width: 6
+barplot(
+  c(3, 5, 4),
+  names.arg = c("Write", "Render", "Review"),
+  ylab = "Relative effort",
+  main = "Example Quarto Thesis Workflow"
+)
+```
+
+Figure @fig-render-cycle gives a simple illustration of a write-render-review workflow.
+
+## Example Table
+
+The following table shows examples of common reference syntax in the template.
+
+```{r}
+#| label: tbl-reference-examples
+#| tbl-cap: Example citation and cross-reference patterns.
+library(knitr)
+
+kable(
+  data.frame(
+    Item = c("In-text citation", "Parenthetical citation", "Figure reference", "Table reference", "Equation reference"),
+    Example = c(
+      "@Reference1",
+      "[@Reference1; @Reference2]",
+      "@fig-render-cycle",
+      "@tbl-reference-examples",
+      "@eq-render-example"
+    )
+  )
+)
+```
+
+Table @tbl-reference-examples provides a small summary of common reference patterns.
+
+## Example Equation
+
+Equations can be inserted and labelled directly in the text.
+
+$$
+R = W + C + E
+$$ {#eq-render-example}
+
+Equation @eq-render-example is only a placeholder example, but it shows the syntax used for numbering and cross-referencing equations.
+
+## Figures and Tables from External Files
+
+Figures can also be inserted from saved image files rather than generated through code. In that case, the image file can be stored in the `Figures/` folder and inserted using standard Quarto image syntax. Tables can similarly be generated from imported data or prepared directly in code chunks.
+
+This flexibility makes it possible to combine static content and reproducible analysis outputs within the same thesis.
+
+## Front Matter
+
+The template supports several front matter elements, including abstract, acknowledgements, abbreviations, symbols, and dedication. These are stored separately from the main body so that the structure remains clear. Some of these elements are optional, and they can be included or removed depending on the needs of the thesis.
+
+The order of the front matter is handled by the LaTeX partial files rather than by the chapter files themselves.
+
+## References and Appendices
+
+The references are intended to appear at the end of the thesis. A dedicated `references.qmd` file can be used to trigger the bibliography at the correct point in the document. Appendices can then follow after the references.
+
+If appendices are used, they should be placed in the `Appendices/` folder and included in the project structure. Depending on the chosen setup, appendix mode may need to be activated manually so that appendix headings appear as `Appendix A`, `Appendix B`, and so on.
+
+## Rendering the Thesis
+
+The thesis should be rendered from the project root. In most cases, the simplest way is to run `quarto preview` during writing and `quarto render` when producing a final PDF. Rendering the whole project rather than individual chapter files ensures that chapter numbering, front matter, references, and appendices are all handled correctly.
+
+This is especially important for a thesis template because section numbering and book structure depend on Quarto recognising the project as a complete book.
+
+## Practical Advice
+
+A useful habit is to render early and often. Small structural issues such as broken cross-references, missing bibliography keys, or misplaced appendices are easier to correct when noticed early. It is also good practice to keep chapters modular, store all references in the bibliography file, and use Quarto’s built-in labelling system consistently.
+
+In a long thesis project, these small habits make the workflow much more stable [@Reference2].

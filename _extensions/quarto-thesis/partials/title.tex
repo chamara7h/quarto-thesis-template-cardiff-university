@@ -1,0 +1,59 @@
+% =========================================================
+% Thesis metadata used by the LaTeX title page
+% Revised for Cardiff University requirements
+% =========================================================
+
+% Full thesis title
+% Used on the title page and wherever \ttitle is called
+\thesistitle{$book.title$}
+
+% Degree award title
+% Example: Doctor of Philosophy
+% Used on the title page and abstract
+\degree{$thesis.degree-name$}
+
+% Candidate full name
+% Should match the student record exactly
+% Used on the title page and abstract
+\author{$book.author$}
+
+% Research group 
+\group{$thesis.group$}
+
+% University name
+% Cardiff requires this on the title page
+\university{$thesis.university$}
+
+% ---------------------------------------------------------
+% Fields below are not required on the Cardiff title page.
+% We leave them blank so the template remains stable,
+% but they will not display extra information.
+% ---------------------------------------------------------
+
+% Supervisor name - not shown on Cardiff title page
+\supervisor{}
+
+% Examiner name - not used
+\examiner{}
+
+% Address - not used
+\addresses{}
+
+% Subject area - not used
+\subject{}
+
+% Keywords - not used
+\keywords{}
+
+% Department / School - not shown on Cardiff title page
+\department{}
+
+% Faculty / College - not shown on Cardiff title page
+\faculty{}
+
+% ---------------------------------------------------------
+% Table of contents depth
+% Leave this as in the original template unless you want
+% to change how many heading levels appear in the TOC
+% ---------------------------------------------------------
+\setcounter{tocdepth}{$if(toc-depth)$$toc-depth$$else$3$endif$}

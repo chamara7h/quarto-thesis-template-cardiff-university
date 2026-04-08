@@ -1,0 +1,155 @@
+% =========================================================
+% BEFORE-BODY FILE
+% Cardiff-style front matter
+% =========================================================
+
+\frontmatter
+\pagestyle{plain}
+
+% =========================================================
+% TITLE PAGE
+% Styled to match the example look requested by the user
+% =========================================================
+\begin{titlepage}
+  \thispagestyle{empty}
+
+  \begin{center}
+
+    \vspace*{0.10\textheight}
+
+    % Thesis title
+    {\Large\bfseries \ttitle \par}
+
+    \vspace{1.5cm}
+
+    % By line
+    {\large by \par}
+
+    \vspace{1cm}
+
+    % Candidate name
+    {\Large \authorname \par}
+
+    \vspace{3cm}
+
+    % Degree submission statement
+    {\large A Thesis Submitted in Fulfilment of the Requirements for \par}
+    \vspace{0.2cm}
+    {\large the Degree of \degreename\ of \par}
+    \vspace{0.2cm}
+    {\large \univname \par}
+
+    \vfill
+
+    % Optional school / section lines if you want this visual style
+    $if(thesis.group)$
+    {\large \groupname \par}
+    \vspace{0.2cm}
+    $endif$
+
+    $if(thesis.department)$
+    {\large \deptname \par}
+    \vspace{0.2cm}
+    $endif$
+
+    {\large \univname, United Kingdom \par}
+
+    \vspace{0.2cm}
+
+    % Month and year only is Cardiff-compliant;
+    % if you want day too, change the YAML date string.
+    $if(book.date)$
+    {\large $book.date$ \par}
+    $endif$
+
+  \end{center}
+\end{titlepage}
+
+\clearpage
+
+% =========================================================
+% DECLARATION PAGE (optional)
+% =========================================================
+$if(thesis.declaration)$
+\begin{declaration}
+\addchaptertocentry{\authorshipname}
+$if(thesis.declaration.text)$
+$thesis.declaration.text$
+$else$
+\input{"$thesis.declaration$"}
+$endif$
+\end{declaration}
+\clearpage
+$endif$
+
+% =========================================================
+% ABSTRACT / SUMMARY
+% =========================================================
+$if(abstract)$
+\begin{abstract}
+\addchaptertocentry{\abstractname}
+$abstract$
+\end{abstract}
+\clearpage
+$endif$
+
+% =========================================================
+% ACKNOWLEDGEMENTS
+% =========================================================
+$if(thesis.acknowledgements)$
+\begin{acknowledgements}
+\addchaptertocentry{\acknowledgementname}
+$if(thesis.acknowledgements.text)$
+$thesis.acknowledgements.text$
+$else$
+\input{"$thesis.acknowledgements$"}
+$endif$
+\end{acknowledgements}
+\clearpage
+$endif$
+
+% =========================================================
+% TABLE OF CONTENTS / LISTS
+% =========================================================
+\begingroup
+\hypersetup{linkcolor=$if(toclinkcolor)$$toclinkcolor$$else$black$endif$}
+
+\tableofcontents
+\clearpage
+
+\listoffigures
+\clearpage
+
+\listoftables
+\clearpage
+
+\endgroup
+
+% =========================================================
+% OPTIONAL LISTS
+% =========================================================
+$if(thesis.abbreviations)$
+\input{"$thesis.abbreviations$"}
+\clearpage
+$endif$
+
+$if(thesis.constants)$
+\input{"$thesis.constants$"}
+\clearpage
+$endif$
+
+$if(thesis.symbols)$
+\input{"$thesis.symbols$"}
+\clearpage
+$endif$
+
+$if(thesis.dedication)$
+\dedicatory{\input{"$thesis.dedication$"}}
+\clearpage
+$endif$
+
+% =========================================================
+% MAIN MATTER
+% =========================================================
+\mainmatter
+\pagestyle{thesis}

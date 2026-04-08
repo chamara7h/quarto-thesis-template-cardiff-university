@@ -1,0 +1,31 @@
+title: quarto-thesis
+author: Eli Holmes
+version: 0.2.5
+contributes:
+  format:
+    pdf:
+      documentclass: MastersDoctoralThesis
+      classoption: ["12pt", "english"]
+      format-resources:
+        - MastersDoctoralThesis.cls
+      template-partials: 
+        - "partials/title.tex"
+        - "partials/before-body.tex"
+      toc: false
+      toc-depth: 2
+      include-before-body: 
+        - partials/definitions.tex
+      include-in-header: 
+        - partials/in-header.tex
+      geometry:
+        - paper=a4paper
+        - inner=2.5cm
+        - outer=2.5cm
+        # - bindingoffset=0.5cm
+        - top=2.5cm
+        - bottom=2.5cm
+      colorlinks: true
+      citecolor: magenta
+      linkcolor: blue
+      urlcolor: red
+      toclinkcolor: black

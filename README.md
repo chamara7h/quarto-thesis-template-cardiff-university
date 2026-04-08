@@ -132,7 +132,7 @@ In the text, cite using keys such as:
 Appendix files can go in the `Appendices/` folder.
 
 
-# Additional Results
+## Additional Results
 
 ### 6. Render the thesis
 
@@ -244,18 +244,6 @@ Most structural formatting is controlled by:
 * `tex/before-body.tex`
 * `tex/in-header.tex`
 
-## Repository Use
-
-If you are sharing this template publicly, you may want to update:
-
-* repository name
-* README
-* site URL
-* repo URL
-* issue links
-
-If you are only using it privately for your own thesis, these are optional.
-
 ## Acknowledgement of Source Template
 
-This template is adapted from the Quarto thesis workflow and the original `MastersDoctoralThesis` LaTeX structure, with substantial revision for Cardiff-style thesis use in Quarto.
+This template was adapted from the excellent [`nmfs-opensci/quarto-thesis`](https://github.com/nmfs-opensci/quarto-thesis) project, which provided the underlying Quarto thesis workflow and template structure. It has been substantially customised for a Cardiff University thesis workflow, including front matter, chapter formatting, appendices, and PDF layout.

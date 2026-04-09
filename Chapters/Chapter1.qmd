@@ -53,64 +53,6 @@ The template therefore aims to provide a practical balance between flexibility a
 
 As with other reproducible writing workflows, the separation of source files, bibliography, and formatting makes revision easier over time [@Reference1; @Reference2].
 
-## Example Citation
-
-The template assumes that your bibliography file contains keys such as `Reference1`, `Reference2`, and so on. An in-text citation can therefore be written as `@Reference1`, while a parenthetical citation with more than one source can be written as `[@Reference1; @Reference2]`.
-
-For example, reproducible document workflows can make large writing projects more manageable [@Reference1; @Reference2].
-
-## Example Equation
-
-Equations can be inserted using standard display-math syntax and labelled for later reference.
-
-$$
-y = \alpha + \beta x + \varepsilon
-$$ {#eq-example-linear}
-
-Equation @eq-example-linear shows a simple linear specification that can be cross-referenced in the text.
-
-## Example Figure
-
-The following figure is included only as a simple example of chunk-based figures and figure cross-referencing.
-
-```{r}
-#| label: fig-template-workflow
-#| fig-cap: Example workflow for a Quarto thesis project.
-#| fig-width: 6
-plot(
-  1:5, c(2, 4, 3, 5, 6),
-  type = "b",
-  xlab = "Stage",
-  ylab = "Progress",
-  main = "Example Thesis Workflow"
-)
-```
-
-Figure @fig-template-workflow shows a simple example figure produced directly from an R code chunk.
-
-## Example Table
-
-Tables can also be generated directly in a chapter and labelled for cross-reference.
-
-```{r}
-#| label: tbl-template-files
-#| tbl-cap: Example overview of core template files.
-library(knitr)
-
-kable(
-  data.frame(
-    File = c("_quarto.yml", "MastersDoctoralThesis.cls", "references.bib"),
-    Purpose = c(
-      "Defines the thesis structure and metadata",
-      "Controls PDF formatting",
-      "Stores bibliography entries"
-    )
-  )
-)
-```
-
-Table @tbl-template-files provides a simple example of a table produced in a code chunk.
-
 ## Before You Begin Writing
 
 Before drafting chapters, it is worth checking the overall structure of the thesis and ensuring that the project metadata, bibliography file, and chapter order are correct. It is also useful to render the template once at an early stage to confirm that the local Quarto and LaTeX setup is working properly.

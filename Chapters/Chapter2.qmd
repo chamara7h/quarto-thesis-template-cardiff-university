@@ -45,7 +45,7 @@ barplot(
 )
 ```
 
-Figure @fig-render-cycle gives a simple illustration of a write-render-review workflow.
+@fig-render-cycle gives a simple illustration of a write-render-review workflow.
 
 ## Example Table
 
@@ -70,7 +70,7 @@ kable(
 )
 ```
 
-Table @tbl-reference-examples provides a small summary of common reference patterns.
+@tbl-reference-examples provides a small summary of common reference patterns.
 
 ## Example Equation
 

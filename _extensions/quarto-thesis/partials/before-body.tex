@@ -68,21 +68,6 @@
 \clearpage
 
 % =========================================================
-% DECLARATION PAGE (optional)
-% =========================================================
-$if(thesis.declaration)$
-\begin{declaration}
-\addchaptertocentry{\authorshipname}
-$if(thesis.declaration.text)$
-$thesis.declaration.text$
-$else$
-\input{"$thesis.declaration$"}
-$endif$
-\end{declaration}
-\clearpage
-$endif$
-
-% =========================================================
 % ABSTRACT / SUMMARY
 % =========================================================
 $if(abstract)$
@@ -109,6 +94,28 @@ $endif$
 $endif$
 
 % =========================================================
+% DECLARATION
+% =========================================================
+
+$if(thesis.declaration)$
+\chapter*{Declaration}
+\addchaptertocentry{Declaration}
+\input{"$thesis.declaration$"}
+\clearpage
+$endif$
+
+% =========================================================
+% AUTHORSHIP
+% =========================================================
+
+$if(thesis.authorship)$
+\chapter*{Statement of Authorship}
+\addchaptertocentry{Statement of Authorship}
+\input{"$thesis.authorship$"}
+\clearpage
+$endif$
+
+% =========================================================
 % TABLE OF CONTENTS / LISTS
 % =========================================================
 \begingroup
@@ -128,23 +135,22 @@ $endif$
 % =========================================================
 % OPTIONAL LISTS
 % =========================================================
+
 $if(thesis.abbreviations)$
+\addchaptertocentry{\abbrevname}
 \input{"$thesis.abbreviations$"}
 \clearpage
 $endif$
 
 $if(thesis.constants)$
+\addchaptertocentry{\constantsname}
 \input{"$thesis.constants$"}
 \clearpage
 $endif$
 
 $if(thesis.symbols)$
+\addchaptertocentry{\symbolsname}
 \input{"$thesis.symbols$"}
-\clearpage
-$endif$
-
-$if(thesis.dedication)$
-\dedicatory{\input{"$thesis.dedication$"}}
 \clearpage
 $endif$
 

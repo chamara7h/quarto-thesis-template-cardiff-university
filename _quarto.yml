@@ -30,6 +30,8 @@ thesis:
   university: "Cardiff University"
   group: "Data Lab for Social Good Research Group"
   acknowledgements: "Frontmatter/acknowledgements.tex"
+  declaration: "Frontmatter/declaration.tex"
+  authorship: "Frontmatter/authorship.tex"
   abbreviations: "Frontmatter/abbreviations.tex"
   symbols: "Frontmatter/symbols.tex"
   dedication: "Frontmatter/dedication.tex"
@@ -52,4 +54,5 @@ format:
     classoption:
       - english
       - 12pt
+      - openany
 

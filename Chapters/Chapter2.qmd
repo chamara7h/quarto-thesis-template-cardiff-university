@@ -1,14 +1,15 @@
+
 # Using the Template in Practice {#sec-using-template}
 
 ## Writing Workflow
 
-The template is designed around a simple workflow. Each chapter is written in its own file, references are managed through the bibliography database, and the final thesis is rendered from the root project file. This makes the writing process more modular than working in a single long document and reduces the risk of formatting changes affecting the whole thesis unexpectedly.
+The template is designed around a simple workflow. Each chapter is written in its own file, references are managed through the bibliography database, and the final thesis is rendered from the project root directory. This makes the writing process more modular than working in a single long document and reduces the risk of formatting changes affecting the whole thesis unexpectedly.
 
 In practice, the most common workflow is to edit one chapter file at a time, render the full thesis periodically, and use the compiled PDF to check headings, numbering, references, figures, and overall layout.
 
 ## Adding Chapters
 
-New chapters should be added as separate `.qmd` files inside the `Chapters/` folder. Once a chapter file has been created, it should be listed in the `chapters:` section of the YAML in `index.qmd`. The order in which the files are listed there determines the order in which they appear in the thesis.
+New chapters should be added as separate `.qmd` files inside the `Chapters/` folder. Once a chapter file has been created, it should be listed in the `chapters:` section of `_quarto.yml`. The order in which the files are listed there determines the order in which they appear in the thesis.
 
 Each chapter should begin with a top-level heading. For example, `# Introduction` will produce a numbered chapter heading in the final PDF. Lower heading levels should then be used to organise sections and subsections within the chapter.
 
@@ -83,21 +84,23 @@ Equation @eq-render-example is only a placeholder example, but it shows the synt
 
 ## Figures and Tables from External Files
 
-Figures can also be inserted from saved image files rather than generated through code. In that case, the image file can be stored in the `Figures/` folder and inserted using standard Quarto image syntax. Tables can similarly be generated from imported data or prepared directly in code chunks.
+Figures can also be inserted from saved image files rather than generated through code. In that case, image files may be stored in a folder such as `Figures/` and inserted using standard Quarto image syntax. Tables can similarly be generated from imported data or prepared directly in code chunks.
 
 This flexibility makes it possible to combine static content and reproducible analysis outputs within the same thesis.
 
 ## Front Matter
 
-The template supports several front matter elements, including abstract, acknowledgements, abbreviations, symbols, and dedication. These are stored separately from the main body so that the structure remains clear. Some of these elements are optional, and they can be included or removed depending on the needs of the thesis.
+The template supports several front matter elements, including the abstract, declaration, acknowledgements, dedication, abbreviations, and symbols. It also supports the table of contents, list of figures, and list of tables. These elements are stored separately from the main body so that the structure remains clear. Some of them are optional and can be included or removed depending on the needs of the thesis.
 
-The order of the front matter is handled by the LaTeX partial files rather than by the chapter files themselves.
+If the thesis is paper-based, or includes jointly authored published, accepted, or submitted papers, an authorship or contribution statement can also be included where appropriate. If the thesis is not paper-based, this should be omitted.
+
+The order of the front matter is handled by the template partial files and related thesis settings rather than by the chapter files themselves.
 
 ## References and Appendices
 
-The references are intended to appear at the end of the thesis. A dedicated `references.qmd` file can be used to trigger the bibliography at the correct point in the document. Appendices can then follow after the references.
+The references are intended to appear at the end of the thesis. A dedicated `references.qmd` file can be used to place the bibliography at the correct point in the document. Appendices then follow after the references.
 
-If appendices are used, they should be placed in the `Appendices/` folder and included in the project structure. Depending on the chosen setup, appendix mode may need to be activated manually so that appendix headings appear as `Appendix A`, `Appendix B`, and so on.
+If appendices are used, they should be placed in the `Appendices/` folder and listed in the `appendices:` section of `_quarto.yml`. Quarto then handles the appendix structure in the rendered thesis.
 
 ## Rendering the Thesis
 
@@ -110,3 +113,4 @@ This is especially important for a thesis template because section numbering and
 A useful habit is to render early and often. Small structural issues such as broken cross-references, missing bibliography keys, or misplaced appendices are easier to correct when noticed early. It is also good practice to keep chapters modular, store all references in the bibliography file, and use Quarto’s built-in labelling system consistently.
 
 In a long thesis project, these small habits make the workflow much more stable [@Reference2].
+

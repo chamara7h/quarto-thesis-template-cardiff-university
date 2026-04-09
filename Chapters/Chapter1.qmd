@@ -1,10 +1,11 @@
+
 # Getting Started with the Template {#sec-getting-started}
 
 ## Overview
 
-This template provides a structured workflow for writing a Cardiff University thesis in Quarto and rendering it to PDF using LuaLaTeX. It is intended to give a clear starting point for thesis writing while keeping the writing process simple and reproducible. The template separates content from formatting so that chapters, references, appendices, and front matter can be managed in an organised way.
+This template provides a structured workflow for writing a Cardiff University thesis in Quarto and rendering it to PDF using LuaLaTeX. It is designed to give a clear starting point for thesis writing while keeping the writing process simple, modular, and reproducible. The template separates content from formatting so that chapters, references, appendices, and front matter can be managed in an organised way.
 
-The thesis is built as a Quarto book project. This means that the main file defines the overall thesis structure, while each chapter is written in a separate `.qmd` file. Front matter elements such as acknowledgements, abbreviations, symbols, and dedication are also stored separately. The overall formatting of the PDF output is controlled through the custom class file and the LaTeX partial files.
+The thesis is built as a Quarto book project. This means that the main project configuration is defined in `_quarto.yml`, while each chapter is written in a separate `.qmd` file. Front matter elements such as acknowledgements, declaration, abbreviations, symbols, and dedication can also be stored separately. The overall formatting of the PDF output is controlled through the custom class file together with the LaTeX partial files.
 
 This chapter introduces the structure of the template and explains where the main files are located. Chapter 2 then explains how to work with citations, figures, tables, equations, references, and appendices in practice.
 
@@ -14,33 +15,39 @@ The template is organised around a small number of core folders and files.
 
 ### Main files
 
-The main project file is `index.qmd`. This contains the thesis metadata and defines the order of the chapters. The bibliography file is `references.bib`, which stores all references cited in the thesis. The custom formatting is controlled through `MastersDoctoralThesis.cls`, together with the LaTeX partials in the `tex/` folder.
+The main project configuration file is `_quarto.yml`. This defines the thesis metadata, output settings, and the order of chapters and appendices. The `index.qmd` file acts as the opening chapter of the thesis. The bibliography file is `references.bib`, which stores all references cited in the thesis. The custom PDF formatting is controlled through `MastersDoctoralThesis.cls`, together with the LaTeX partial files in the `partials/` folder.
 
 ### Main folders
 
-The `Chapters/` folder contains the main thesis chapters. Each chapter should be written in its own `.qmd` file. The `Appendices/` folder contains appendix files. The `Frontmatter/` folder contains optional front matter files such as acknowledgements, abbreviations, symbols, and dedication. The `Figures/` folder can be used for static figures that are inserted directly into the thesis.
+The `Chapters/` folder contains the main thesis chapters. Each chapter should be written in its own `.qmd` file. The `Appendices/` folder contains appendix files. The `Frontmatter/` folder contains optional front matter files such as acknowledgements, declaration, abbreviations, symbols, and dedication. Figures may either be generated directly from code chunks or stored separately in a folder such as `Figures/`.
 
 ## How the Thesis Is Structured
 
-The thesis follows a standard structure consisting of front matter, main chapters, references, and appendices. The front matter is generated before the main body begins and includes the title page, abstract, acknowledgements, table of contents, and optional lists such as abbreviations and symbols. The main body consists of the numbered chapters. The references are placed at the end of the thesis, followed by any appendices.
+The thesis follows a standard structure consisting of front matter, main chapters, references, and appendices. The front matter is generated before the main body begins and may include the title page, abstract, declaration, acknowledgements, table of contents, list of figures, list of tables, and optional lists such as abbreviations and symbols. The main body consists of the numbered chapters. The references are placed at the end of the thesis, followed by any appendices.
 
-This structure is controlled through the YAML in `index.qmd`, where the order of chapters and appendices is listed explicitly.
+This structure is controlled through the YAML in `_quarto.yml`, where the order of chapters and appendices is listed explicitly.
 
 ## Editing the Metadata
 
-Most of the thesis information is set in the YAML at the top of `index.qmd`. This is where the title, author name, submission date, degree name, university, bibliography file, and chapter order are defined. This is also where you can decide which optional front matter files are included.
+Most of the thesis information is set in `_quarto.yml`. This is where the title, author name, submission date, degree name, university, bibliography file, output settings, and chapter order are defined. This is also where optional front matter files can be included or excluded.
 
 As a result, one of the first steps in using the template is to replace the default metadata with your own details and check that the listed chapter files match the structure you intend to use.
 
 ## Writing Chapters
 
-Each thesis chapter should be written in a separate `.qmd` file using normal Quarto markdown headings. For example, a chapter should begin with a top-level heading using `#`, followed by sections using `##` and subsections using `###`. Section numbers should not be typed manually because Quarto generates them automatically when section numbering is enabled.
+Each thesis chapter should be written in a separate `.qmd` file using normal Quarto markdown headings. For example, a chapter should begin with a top-level heading using `#`, followed by sections using `##`` and subsections using `###`. Section numbers should not be typed manually because Quarto generates them automatically when section numbering is enabled.
 
 This structure keeps each chapter manageable and makes the full thesis easier to maintain. It also helps ensure that chapter numbering, cross-references, and table of contents entries update correctly when the thesis is re-rendered.
 
+## Front Matter Files
+
+Front matter files are optional and are usually stored in the `Frontmatter/` folder as separate `.tex` files. These can include items such as acknowledgements, declaration, dedication, abbreviations, and symbols. They are then linked through `_quarto.yml` and inserted automatically when the thesis is rendered.
+
+If the thesis is written as a traditional monograph, no paper-specific authorship statement is needed unless required by the School or University. If the thesis is written in a paper-based format, or includes jointly authored published, accepted, or submitted papers, then an authorship or contribution statement should be included where appropriate. If the thesis is not paper-based, this section should be omitted.
+
 ## Why This Template Uses Quarto
 
-Quarto provides a convenient writing environment that combines plain text authoring with high-quality PDF output. It also supports references, figures, tables, equations, and cross-references in a consistent way. For thesis writing, this is especially useful because it allows the thesis to remain modular while still rendering as a single document.
+Quarto provides a convenient writing environment that combines plain-text authoring with high-quality PDF output. It also supports references, figures, tables, equations, and cross-references in a consistent way. For thesis writing, this is especially useful because it allows the thesis to remain modular while still rendering as a single document.
 
 The template therefore aims to provide a practical balance between flexibility and structure. The main goal is not to hide the underlying mechanics completely, but to reduce the amount of formatting work that has to be done while writing.
 
@@ -92,7 +99,7 @@ library(knitr)
 
 kable(
   data.frame(
-    File = c("index.qmd", "MastersDoctoralThesis.cls", "references.bib"),
+    File = c("_quarto.yml", "MastersDoctoralThesis.cls", "references.bib"),
     Purpose = c(
       "Defines the thesis structure and metadata",
       "Controls PDF formatting",
@@ -106,7 +113,7 @@ Table @tbl-template-files provides a simple example of a table produced in a cod
 
 ## Before You Begin Writing
 
-Before drafting chapters, it is worth checking the overall structure of the thesis and ensuring that the project metadata, bibliography file, and chapter order are correct. It is also useful to compile the template once at an early stage to make sure the local Quarto and LaTeX setup is working properly.
+Before drafting chapters, it is worth checking the overall structure of the thesis and ensuring that the project metadata, bibliography file, and chapter order are correct. It is also useful to render the template once at an early stage to confirm that the local Quarto and LaTeX setup is working properly.
 
 Once that is done, the thesis can be developed chapter by chapter within the project structure.
 

@@ -5,7 +5,7 @@ contributes:
   format:
     pdf:
       documentclass: MastersDoctoralThesis
-      classoption: ["12pt", "english"]
+      classoption: ["12pt", "english", "liststotoc", "toctotoc"]
       format-resources:
         - MastersDoctoralThesis.cls
       template-partials: 

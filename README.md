@@ -10,16 +10,6 @@ This template uses **Quarto** for authoring and **LuaLaTeX** for PDF rendering. 
 
 ---
 
-## Quick Start
-
-1. Clone or download the template.
-2. Edit `_quarto.yml` with your thesis details.
-3. Add chapter files to `Chapters/`.
-4. Add references to `references.bib`.
-5. Run `quarto preview` or `quarto render`.
-
----
-
 ## Features
 
 - Quarto book-based thesis structure

@@ -21,6 +21,66 @@ Check the installation:
 quarto check
 ```
 
+## Downloading the template
+
+### Option 1: Using Git
+
+Open Terminal on macOS or Git Bash / PowerShell on Windows.
+
+Choose the folder where you want to save the thesis project.
+
+#### macOS
+
+```bash
+cd ~/Documents
+git clone https://github.com/chamara7h/quarto-thesis-template-cardiff-university.git my-thesis
+cd my-thesis
+```
+
+#### Windows
+
+```bash
+cd "C:/Users/YOUR-USERNAME/Documents"
+git clone https://github.com/chamara7h/quarto-thesis-template-cardiff-university.git my-thesis
+cd my-thesis
+```
+
+Replace `YOUR-USERNAME` with your Windows username.
+
+### Option 2: Download as ZIP
+
+If you do not want to use Git:
+
+1. Click the green **Code** button on the GitHub repository page.
+2. Select **Download ZIP**.
+3. Unzip the folder.
+4. Rename the folder, for example, `my-thesis`.
+5. Open the folder in RStudio, Positron, VS Code, or your preferred editor.
+
+## Creating your own thesis project
+
+After downloading the template, you may want to remove the connection to the original GitHub repository and start your own Git history.
+
+### macOS
+
+```bash
+rm -rf .git
+git init
+git add .
+git commit -m "Initial thesis template"
+```
+
+### Windows PowerShell
+
+```powershell
+Remove-Item -Recurse -Force .git
+git init
+git add .
+git commit -m "Initial thesis template"
+```
+
+This creates a clean local version of the template for your own thesis.
+
 ## Use the template directly
 
 The repository root is a complete runnable example.

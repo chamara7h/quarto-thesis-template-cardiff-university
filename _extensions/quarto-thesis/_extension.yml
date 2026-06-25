@@ -1,6 +1,6 @@
 title: quarto-thesis
-author: Eli Holmes
-version: 0.2.5
+author: Eli Holmes and template contributors
+version: 0.3.0
 contributes:
   format:
     pdf:
@@ -17,6 +17,8 @@ contributes:
         - partials/definitions.tex
       include-in-header: 
         - partials/in-header.tex
+      filters:
+        - shift-headings.lua
       geometry:
         - paper=a4paper
         - inner=2.5cm

@@ -32,12 +32,18 @@
 
     \vspace{3cm}
 
-    % Degree submission statement
-    {\large A Thesis Submitted in Fulfilment of the Requirements for \par}
+    % Degree-specific submission statement
+    $if(thesis.masters)$
+    {\large This dissertation is submitted to \univname \par}
     \vspace{0.2cm}
-    {\large the Degree of \degreename\ of \par}
+    {\large in partial fulfilment of the requirements for the degree of \par}
+    \vspace{0.5cm}
+    {\Large\bfseries \MakeUppercase{\degreename} \par}
+    $else$
+    {\large A thesis submitted for the degree of \par}
     \vspace{0.2cm}
-    {\large \univname \par}
+    {\large \degreename \par}
+    $endif$
 
     \vfill
 
@@ -152,6 +158,13 @@ $if(thesis.symbols)$
 \addchaptertocentry{\symbolsname}
 \input{"$thesis.symbols$"}
 \clearpage
+$endif$
+
+% =========================================================
+% DEDICATION
+% =========================================================
+$if(thesis.dedication)$
+\dedicatory{\input{"$thesis.dedication$"}}
 $endif$
 
 % =========================================================

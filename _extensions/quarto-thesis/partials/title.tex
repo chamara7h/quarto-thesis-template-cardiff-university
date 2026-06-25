@@ -17,6 +17,12 @@
 % Used on the title page and abstract
 \author{$book.author$}
 
+% Candidate details used by the master's declaration form.
+\newcommand{\candidateid}{$if(thesis.candidate-id)$$thesis.candidate-id$$else$YOUR CANDIDATE ID$endif$}
+\newcommand{\candidatetitle}{$if(thesis.candidate-title)$$thesis.candidate-title$$else$Mr / Miss / Ms / Mrs / Rev / Dr / Other$endif$}
+\newcommand{\candidatesurname}{$if(thesis.candidate-surname)$$thesis.candidate-surname$$else$YOUR SURNAME$endif$}
+\newcommand{\candidatefirstnames}{$if(thesis.candidate-first-names)$$thesis.candidate-first-names$$else$YOUR FIRST NAMES$endif$}
+
 % Research group 
 \group{$thesis.group$}
 

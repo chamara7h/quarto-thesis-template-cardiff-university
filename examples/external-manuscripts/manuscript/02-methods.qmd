@@ -1,0 +1,4 @@
+# Methods
+
+The manuscript remains the single source of truth. Changes made here appear in
+both the manuscript output and the thesis the next time they are rendered.

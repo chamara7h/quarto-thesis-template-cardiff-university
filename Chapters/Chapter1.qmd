@@ -35,7 +35,7 @@ As a result, one of the first steps in using the template is to replace the defa
 
 ## Writing Chapters
 
-Each thesis chapter should be written in a separate `.qmd` file using normal Quarto markdown headings. For example, a chapter should begin with a top-level heading using `#`, followed by sections using `##`` and subsections using `###`. Section numbers should not be typed manually because Quarto generates them automatically when section numbering is enabled.
+Each thesis chapter should be written in a separate `.qmd` file using normal Quarto markdown headings. For example, a chapter should begin with a top-level heading using `#`, followed by sections using `##` and subsections using `###`. Section numbers should not be typed manually because Quarto generates them automatically when section numbering is enabled.
 
 This structure keeps each chapter manageable and makes the full thesis easier to maintain. It also helps ensure that chapter numbering, cross-references, and table of contents entries update correctly when the thesis is re-rendered.
 

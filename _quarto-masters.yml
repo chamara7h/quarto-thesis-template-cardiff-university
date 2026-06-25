@@ -1,0 +1,28 @@
+# Render with: quarto render --profile masters
+#
+# This profile overrides the doctoral defaults in _quarto.yml. Replace all
+# placeholder values before using it for a submission.
+
+book:
+  title: "Your Dissertation Title"
+  author: "Your Full Name"
+  date: "September 2026"
+
+abstract: >
+  Insert the dissertation abstract here.
+
+thesis:
+  masters: true
+  degree-name: "Master of Science"
+  university: "Cardiff University"
+  group: "Your School or Research Group"
+  candidate-id: "YOUR CANDIDATE ID"
+  candidate-title: "Mr / Miss / Ms / Mrs / Rev / Dr / Other"
+  candidate-surname: "YOUR SURNAME"
+  candidate-first-names: "YOUR FIRST NAMES"
+  acknowledgements: "Frontmatter/acknowledgements.tex"
+  declaration: "Frontmatter/declaration-masters.tex"
+  authorship: false
+  abbreviations: "Frontmatter/abbreviations.tex"
+  symbols: "Frontmatter/symbols.tex"
+  dedication: "Frontmatter/dedication.tex"

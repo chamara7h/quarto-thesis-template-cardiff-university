@@ -1,0 +1,10 @@
+# Paper-based chapter {#sec-paper-chapter}
+
+This introductory material belongs only to the thesis. The manuscript sections
+below remain in their original project folder.
+
+::: {.shift-headings}
+{{< include ../manuscript/01-introduction.qmd >}}
+
+{{< include ../manuscript/02-methods.qmd >}}
+:::

@@ -1,0 +1,9 @@
+# Introduction
+
+This heading is level 1 because the file can also be rendered as a standalone
+manuscript. Inside the `shift-headings` wrapper it becomes a level 2 section in
+the thesis chapter.
+
+## Background
+
+Subheadings are shifted by the same amount.

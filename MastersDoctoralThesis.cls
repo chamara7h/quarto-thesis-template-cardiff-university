@@ -215,7 +215,7 @@
 % - Appendix:     Appendix A. Title
 \titleformat{\chapter}[block]
   {\normalfont\Large\bfseries\raggedright}
-  {\@chapapp\ \thechapter.}
+  {\@chapapp\ \thechapter:}
   {0.75em}
   {}
 

@@ -1,360 +1,238 @@
-
 # Cardiff University Quarto Thesis Template
 
-A professional Quarto thesis template for Cardiff University, designed for writing research degree theses in a modular, reproducible, and PDF-first workflow.
+A PDF-first Quarto template for writing Cardiff University doctoral theses and
+master's dissertations. It provides a Cardiff-style title page, degree-specific
+wording, front matter, chapters, appendices, citations, cross-references, and a
+workflow for including paper manuscripts maintained in other folders.
 
-This template uses **Quarto** for authoring and **LuaLaTeX** for PDF rendering. It provides a structured starting point for thesis writing, with support for front matter, numbered chapters, references, appendices, and cross-referencing, while keeping content and formatting cleanly separated.
+> Always compare the generated document with the current Cardiff University
+> and School-level submission guidance before submitting.
 
-> [!IMPORTANT]
-> This template is designed to support a Cardiff-style thesis workflow, but you should always check the latest Cardiff University and School-level guidance before final submission.
-
----
-
-## Features
-
-- Quarto book-based thesis structure
-- PDF rendering with LuaLaTeX
-- Cardiff-style title page and front matter
-- Numbered chapters and sections
-- References placed at the end of the thesis
-- Support for appendices
-- Cross-referencing for sections, figures, tables, and equations
-- Custom LaTeX class for thesis formatting
-- Separate front matter files for declaration, acknowledgements, abbreviations, symbols, and dedication
-- Easy customisation through `_quarto.yml`, `MastersDoctoralThesis.cls`, and template partials
-
----
-
-## Quick Start
-
-### 1. Install the required software
-
-You will need:
+## Requirements
 
 - [Quarto](https://quarto.org/)
-- A TeX distribution with **LuaLaTeX** support, such as:
-  - [TinyTeX](https://yihui.org/tinytex/)
-  - [TeX Live](https://www.tug.org/texlive/)
-- An editor such as:
-  - RStudio
-  - VS Code
-  - Positron
+- LuaLaTeX through TinyTeX, TeX Live, or MiKTeX
+- An editor such as VS Code, Positron, or RStudio
+- R only if your `.qmd` files contain R code chunks
 
-### 2. Clone or download the template
+Check the installation:
 
-Clone the repository or download it as a ZIP file, then open the project folder in your editor.
+```bash
+quarto check
+```
 
-### 3. Update the thesis metadata
+## Use the template directly
 
-Edit `_quarto.yml` and replace the default metadata with your own:
+The repository root is a complete runnable example.
 
-- thesis title
-- author name
-- submission date
-- degree name
-- university
-- front matter files
-- chapter list
-- appendix list
-- bibliography file
-
-### 4. Add your chapters
-
-Write each chapter in its own `.qmd` file inside the `Chapters/` folder, then list those files under `book: chapters:` in `_quarto.yml`.
-
-### 5. Add references
-
-Store all references in `references.bib` and cite them in your text using standard Quarto / Pandoc citation syntax.
-
-### 6. Render the thesis
-
-From the project root, run:
+1. Clone or download the repository.
+2. Edit `_quarto.yml`.
+3. Replace the example content in `Chapters/`.
+4. Put references in `references.bib`.
+5. Add or remove front matter paths under `thesis:`.
+6. Render from the repository root:
 
 ```bash
 quarto preview
-```
-
-for live preview during writing, or:
-
-```bash
 quarto render
 ```
 
-to render the full thesis.
-
----
-
-## Project Structure
-
-```text
-.
-├── _quarto.yml
-├── index.qmd
-├── references.qmd
-├── references.bib
-├── _extentions/MastersDoctoralThesis.cls
-├── Frontmatter/
-│   ├── declaration.tex
-│   ├── acknowledgements.tex
-│   ├── abbreviations.tex
-│   ├── symbols.tex
-│   └── dedication.tex
-├── Chapters/
-│   ├── Chapter1.qmd
-│   ├── Chapter2.qmd
-│   └── ...
-├── Appendices/
-│   ├── AppendixA.qmd
-│   └── ...
-├── Figures/
-└── _extentions/partials/
-                ├── before-body.tex
-                ├── in-header.tex
-                ├── title.tex
-                └── ...
-```
-
----
-
-## Core Files
-
-### `_quarto.yml`
-
-This is the main project configuration file. It controls:
-
-* thesis metadata
-* output format
-* class options
-* bibliography
-* chapter order
-* appendix order
-* front matter file inclusion
-
-### `index.qmd`
-
-This is the opening file of the thesis and typically serves as the first chapter or introductory chapter.
-
-### `MastersDoctoralThesis.cls`
-
-This is the custom LaTeX class file used to control PDF formatting, including page layout, headings, spacing, and table of contents behaviour.
-
-### `partials/before-body.tex`
-
-This controls the title page and front matter that appear before the main body of the thesis.
-
-### `partials/in-header.tex`
-
-This loads additional LaTeX packages and PDF-specific settings.
-
-### `references.bib`
-
-This is the BibTeX bibliography database used by the thesis.
-
----
-
-## Writing Workflow
-
-The template is designed around a simple workflow:
-
-1. Write one chapter at a time in its own `.qmd` file
-2. Keep references in `references.bib`
-3. Render the full project periodically
-4. Review the PDF for structure, numbering, references, and layout
-
-This approach is more modular than writing the thesis as one long file and makes the project easier to maintain over time.
-
----
-
-## Adding Chapters
-
-Create new chapter files inside the `Chapters/` folder and list them in `_quarto.yml` under:
+The normal chapter pattern is:
 
 ```yaml
 book:
   chapters:
     - index.qmd
     - Chapters/Chapter2.qmd
-    - Chapters/Chapter3.qmd
+    - references.qmd
+  appendices:
+    - Appendices/AppendixA.qmd
 ```
 
-Each chapter should begin with a top-level heading, for example:
+Each chapter starts with `#`, sections with `##`, and subsections with `###`.
+Do not type section numbers manually.
 
-```md
-# Introduction
+## Doctoral thesis configuration
+
+The default `_quarto.yml` is configured for a PhD:
+
+```yaml
+book:
+  title: "Your Thesis Title"
+  author: "Your Full Name"
+  date: "September 2026"
+
+thesis:
+  degree-name: "Doctor of Philosophy"
+  university: "Cardiff University"
+  group: "Your School or Research Group"
+  acknowledgements: "Frontmatter/acknowledgements.tex"
+  declaration: "Frontmatter/declaration.tex"
+  authorship: "Frontmatter/authorship.tex"
+  abbreviations: "Frontmatter/abbreviations.tex"
+  symbols: "Frontmatter/symbols.tex"
+  dedication: "Frontmatter/dedication.tex"
 ```
 
-Use lower heading levels for sections and subsections:
+Leave `thesis.masters` absent or set it to `false`. The doctoral title page then
+uses “A thesis submitted for the degree of …”.
 
-```md
-## Background
-### Further discussion
+`authorship` is optional and is mainly useful for a paper-based thesis. Remove
+the line or set it to `false` when it is not needed.
+
+## Master's dissertation configuration
+
+The `_quarto-masters.yml` profile contains the master's settings. Edit its
+placeholders, then render with:
+
+```bash
+quarto preview --profile masters
+quarto render --profile masters
 ```
 
-Do not type section numbers manually. Quarto will generate them automatically.
+The important fields are:
 
----
-
-## Citations and Bibliography
-
-All references should be stored in `references.bib`.
-
-Examples:
-
-* In-text citation: `@Reference1`
-* Parenthetical citation: `[@Reference1; @Reference2]`
-
-The bibliography is typically placed through a dedicated `references.qmd` file near the end of the thesis.
-
----
-
-## Cross-Referencing
-
-This template supports Quarto cross-referencing for figures, tables, and equations.
-
-### Figures
-
-````qmd
-```{r}
-#| label: fig-example
-#| fig-cap: Example figure caption.
-plot(cars)
-```
-````
-
-Refer to it in text using:
-
-```md
-@fig-example
+```yaml
+thesis:
+  masters: true
+  degree-name: "Master of Science"
+  university: "Cardiff University"
+  candidate-id: "C12345678"
+  candidate-title: "Mr"
+  candidate-surname: "YOUR SURNAME"
+  candidate-first-names: "YOUR FIRST NAMES"
+  declaration: "Frontmatter/declaration-masters.tex"
 ```
 
-### Tables
+With `masters: true`, the title page automatically prints:
 
-````qmd
-```{r}
-#| label: tbl-example
-#| tbl-cap: Example table caption.
-knitr::kable(head(mtcars))
-```
-````
+```text
+This dissertation is submitted to Cardiff University
+in partial fulfilment of the requirements for the degree of
 
-Refer to it in text using:
-
-```md
-@tbl-example
+MASTER OF SCIENCE
 ```
 
-### Equations
+Change `degree-name` for another award, such as `Master of Arts`, `Master of
+Business Administration`, or the exact award title required by your programme.
+The separate `Frontmatter/declaration-masters.tex` file uses the candidate and
+degree metadata above to create the master's declaration statements.
 
-```md
+## Include manuscripts from another folder
+
+For a paper-based thesis, the thesis chapter can contain its own preface and
+then include manuscript sections maintained elsewhere:
+
+```qmd
+# Paper title {#sec-paper-title}
+
+This preface explains the paper's status and contribution to the thesis.
+
+::: {.shift-headings}
+{{< include ../../paper-project/manuscript/01-introduction.qmd >}}
+
+{{< include ../../paper-project/manuscript/02-methods.qmd >}}
+
+{{< include ../../paper-project/manuscript/03-results.qmd >}}
+:::
+```
+
+The included manuscript may use `# Introduction`, `# Methods`, and similar
+level-1 headings when rendered on its own. The `.shift-headings` wrapper moves
+every included heading down one level, so those headings become sections inside
+the thesis chapter. Nested headings, lists, block quotes, and divs are handled
+by `_extensions/quarto-thesis/shift-headings.lua`.
+
+The wrapper chapter itself—not each external manuscript file—should be listed
+under `book.chapters`. See `examples/external-manuscripts/` for a small working
+layout. Adjust relative include paths and image/data paths for your repository.
+
+## Front matter
+
+Front matter is controlled under `thesis:`:
+
+- `acknowledgements`
+- `declaration`
+- `authorship`
+- `abbreviations`
+- `constants`
+- `symbols`
+- `dedication`
+
+Remove an item or set it to `false` to omit it. The abstract is entered directly
+in YAML:
+
+```yaml
+abstract: >
+  Write the abstract here.
+```
+
+The title page and front-matter order are defined in
+`_extensions/quarto-thesis/partials/before-body.tex`.
+
+## Citations, figures, tables, and equations
+
+Store references in `references.bib`:
+
+```qmd
+Narrative citation: @Reference1
+
+Parenthetical citation: [@Reference1; @Reference2]
+```
+
+Use Quarto labels and references:
+
+```qmd
+![Caption](Figures/example.pdf){#fig-example}
+
+See @fig-example.
+
 $$
 E = mc^2
 $$ {#eq-einstein}
 ```
 
-Refer to it in text using:
+The bibliography is placed by `references.qmd`. Appendices belong under
+`book.appendices` in `_quarto.yml`.
 
-```md
-@eq-einstein
+## Project structure
+
+```text
+.
+|-- _quarto.yml
+|-- _quarto-masters.yml
+|-- index.qmd
+|-- references.qmd
+|-- references.bib
+|-- Chapters/
+|-- Appendices/
+|-- Frontmatter/
+|   |-- declaration.tex
+|   `-- declaration-masters.tex
+|-- Figures/
+|-- examples/
+`-- _extensions/
+    `-- quarto-thesis/
+        |-- _extension.yml
+        |-- shift-headings.lua
+        |-- MastersDoctoralThesis.cls
+        `-- partials/
 ```
 
----
+## Main customization files
 
-## Front Matter
+- `_quarto.yml`: doctoral metadata, chapter order, bibliography, and format.
+- `_quarto-masters.yml`: master's profile and candidate details.
+- `Frontmatter/*.tex`: editable front-matter content.
+- `partials/before-body.tex`: title page and front-matter sequence.
+- `MastersDoctoralThesis.cls`: page layout and heading styles.
+- `shift-headings.lua`: safe heading-level adjustment for included manuscripts.
 
-Front matter files are stored separately in the `Frontmatter/` folder and included through the `thesis:` settings in `_quarto.yml`.
-
-This template supports:
-
-* title page
-* abstract
-* declaration
-* acknowledgements
-* table of contents
-* list of figures
-* list of tables
-* list of abbreviations
-* list of symbols
-* dedication
-
-Some of these are optional and can be omitted if not needed.
-
-If the thesis is **paper-based**, or includes **jointly authored papers**, an authorship or contribution statement may also be included where appropriate. If the thesis is **not** paper-based, this should usually be omitted.
-
----
-
-## Appendices
-
-Appendix files should be placed in the `Appendices/` folder and listed in `_quarto.yml` under:
-
-```yaml
-book:
-  appendices:
-    - Appendices/AppendixA.qmd
-```
-
-Quarto will then handle the appendix structure in the rendered thesis.
-
----
-
-## Rendering
-
-Render from the project root directory, not from an individual chapter file.
-
-Use:
-
-```bash
-quarto preview
-```
-
-during writing, and:
-
-```bash
-quarto render
-```
-
-for a full PDF render.
-
-Rendering the whole project ensures that:
-
-* chapter numbering is correct
-* front matter is included properly
-* references appear in the right place
-* appendices are handled correctly
-* cross-references update consistently
-
----
-
-## Customisation
-
-Most structural formatting is controlled by:
-
-* `MastersDoctoralThesis.cls`
-* `partials/before-body.tex`
-* `partials/in-header.tex`
-
-These files can be edited if you need to adjust:
-
-* title page layout
-* front matter order
-* table of contents behaviour
-* page layout
-* appendix formatting
-* PDF styling
-
----
-
-## Recommended Usage Notes
-
-* Render early and often
-* Keep chapters modular
-* Store all references in `references.bib`
-* Use Quarto labels consistently for figures, tables, and equations
-* Check the compiled PDF regularly for formatting or structural issues
-* Confirm Cardiff University submission requirements before final submission
-
----
+Render the whole project from its root rather than rendering an individual
+chapter. This keeps chapter numbering, references, appendices, and
+cross-references consistent.
 
 ## Acknowledgement
 
-This template was adapted from the excellent `nmfs-opensci/quarto-thesis` project, which provided the underlying Quarto thesis workflow. It has since been customised for a Cardiff University thesis format, including title page layout, front matter structure, appendix handling, and PDF styling.
-
+This template was adapted from `nmfs-opensci/quarto-thesis` and customized for a
+Cardiff University thesis workflow.

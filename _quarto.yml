@@ -1,6 +1,7 @@
 project:
   type: book
   output-dir: .
+  execute-dir: project
 
 book:
   title: "A Doctoral Thesis Title"
@@ -26,6 +27,7 @@ abstract: >
   contribution of the thesis.
 
 thesis:
+  # Leave masters unset/false for a doctoral thesis.
   degree-name: "Doctor of Philosophy"
   university: "Cardiff University"
   group: "Data Lab for Social Good Research Group"
